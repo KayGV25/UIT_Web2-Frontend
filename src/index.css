@@ -2,6 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+
+*{
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
 .card{
     @apply px-10 py-6 rounded-lg bg-neutral-800 text-white font-bold h-fit
+}
+
+.DropDownProfile{
+    position: absolute;
+    top: 3.5rem;
+    right: 1rem;
+    border: 2px black solid;
+    @apply bg-slate-50 text-gray-950 rounded-lg drop-shadow-lg border-neutral-950 border-2
+}
+.DropDownProfile > ul > *:hover{
+    @apply bg-slate-300 cursor-pointer z-10
+}
+.DropDownProfile > ul > *:first-child:hover{
+    @apply rounded-t-lg
+}
+.DropDownProfile > ul > *:last-child:hover{
+    @apply rounded-b-lg
+}
+.DropDownProfile > ul{
+    @apply z-10
+}
+.DropDownProfile p{
+    @apply mx-5 my-3
+}
+
+/* .DropDownProfile::before{
+    content: "";
+    position: absolute;
+    top: -0.5rem;
+    right: 0.7rem;
+    width: 15px;
+    height: 15px;
+    @apply bg-slate-50 rotate-45 border-neutral-950 border-t-2 border-l-2 z-0
+} */
+.avatar{
+    margin: auto 0;
+}
+.newRecipe{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    @apply grid place-items-center bg-slate-600 hover:bg-slate-700 rounded-full cursor-pointer
+}
+.search{
+    max-width: 400px;
+    min-width: 100px;
+    width: 50vw;
+    height: 30px;
+    text-align: left;
+    padding-inline: 10px;
+    @apply outline-none rounded-lg
+}
+.search-container{
+    margin: auto;
+}
+.SecondNav{
+    @apply bg-slate-800 h-10 flex justify-between align-middle px-20 w-screen
+}
+.dropdown{
+    position: absolute;
+    top: 2rem;
+    left: -0.9rem;
+    @apply rounded-lg w-36 bg-slate-50 text-slate-950 flex flex-col gap-1
+}
+.dropdown  p{
+    @apply mx-4 my-2
+}
+.dropdown > li:hover{
+    @apply bg-slate-200
 }
