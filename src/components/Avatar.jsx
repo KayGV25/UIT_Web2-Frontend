@@ -4,10 +4,12 @@ export default function Avatar(){
     const [openDropdown, setOpenDropdown] = useState(false);
     return(
         <>
-            <div className="h-fit" onClick={() => {
+            <div className=" size-10 grid align-middle" onClick={() => {
                 setOpenDropdown((prev) => !prev)
             }}>
-                <img src="/DAvatar.svg" className=" rounded-full size-6 block cursor-pointer"/>
+                <div className="h-fit m-auto">
+                <img src="/DAvatar.svg" className=" rounded-full size-6 block cursor-pointer m-auto"/>
+                </div>
             </div>
             {openDropdown && <DropdownProfile />}
         </>
