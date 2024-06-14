@@ -32,7 +32,7 @@
 .DropDownProfile > ul{
     @apply z-10
 }
-.DropDownProfile p{
+.DropDownProfile > ul > li > p{
     @apply mx-5 my-3
 }
 

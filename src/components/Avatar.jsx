@@ -20,7 +20,12 @@ function DropdownProfile(){
             <ul className="flex flex-col">
                 <li><p>Favorite recipe</p></li>
                 <li><p>My recipe</p></li>
-                <li><p>Logout</p></li>
+                <li>
+                    <div className="flex mx-5 my-3">
+                        <img src="/logout.svg" alt=""  width="20"/>
+                        <p className="mx-2">Logout</p>
+                    </div>
+                </li>
             </ul>
         </div>
     )

@@ -11,7 +11,7 @@ export default function NavBar(){
     const [inputText, setInputText] = useState('');
     return (
         <>
-            <nav className={`bg-slate-800 h-16 flex justify-between align-middle ${checkMobile ? "px-3" : "px-20"} w-screen`}>
+            <nav className={`bg-slate-800 h-16 flex justify-between align-middle ${checkMobile ? "px-3" : "px-20"} w-screen pt-3`}>
                 <Link className="flex align-middle gap-3" to="/">
                     <img src="/vite.svg" width="30"/>
                     {checkMobile ? "" : <div className="my-auto"><p className=" font-bold">ESRO</p></div>}
@@ -50,7 +50,10 @@ function DSecondNav(){
                             <li><p>Dinner</p></li>
                             <li><p>Dessert</p></li>
                             {/* Goto /search:type=meal */}
-                            <p className="hover:underline underline-offset-2">View All</p>
+                            <div className="flex w-30 hover:underline underline-offset-2">
+                                <p className="w-fit">View All</p>
+                                <img src="/arrow_right.svg" className="text-slate-950 translate-x-[-0.5rem] " width="20"/>
+                            </div>
                         </ul>
                     </li>
                     <li className="group/meal relative hover:border-b-4 hover:border-b-slate-50 hover:cursor-pointer">INGREDIENT
