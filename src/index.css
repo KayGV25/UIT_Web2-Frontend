@@ -14,7 +14,7 @@
 }
 
 .DropDownProfile{
-    position: absolute;
+    position: fixed;
     top: 3.5rem;
     right: 1rem;
     border: 2px black solid;

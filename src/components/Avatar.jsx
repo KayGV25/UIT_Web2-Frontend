@@ -19,7 +19,7 @@ export default function Avatar(){
 function DropdownProfile(){
     return(
         <div className="flex flex-col DropDownProfile">
-            <ul className="flex flex-col">
+            <ul className="flex flex-col  z-20">
                 <li><p>Favorite recipe</p></li>
                 <li><p>My recipe</p></li>
                 <li>

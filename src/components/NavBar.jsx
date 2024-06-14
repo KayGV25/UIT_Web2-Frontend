@@ -1,7 +1,7 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import Avatar from "./Avatar";
 import { useState } from "react";
-import { DarkThemeToggle} from "flowbite-react"
+import { DarkThemeToggle } from "flowbite-react";
 import isMobile from "../hooks/isMobile";
 import MSidebar from "./MSidebar";
 import useDarkMode from "../hooks/useDarkMode";
@@ -15,18 +15,26 @@ export default function NavBar() {
   const [inputText, setInputText] = useState("");
   return (
     <>
+      <div className="flex flex-col fixed top-0">
       <nav
         className={`bg-slate-800 h-16 flex justify-between align-middle ${
           checkMobile ? "px-3" : "px-20"
         } w-screen pt-3 sticky text-gray-50 top-0`}
       >
-        {checkMobile ? 
-                <>
-                    <button className="mx-3" onClick={() => {setIsSidebarOpen(!isSidebarOpen)}}>
-                        <img src="./burger-menu.svg" width="20"/>
-                    </button>
-                </>
-         : ""}
+        {checkMobile ? (
+          <>
+            <button
+              className="mx-3"
+              onClick={() => {
+                setIsSidebarOpen(!isSidebarOpen);
+              }}
+            >
+              <img src="./burger-menu.svg" width="20" />
+            </button>
+          </>
+        ) : (
+          ""
+        )}
         <Link className="flex align-middle gap-3" to="/">
           <img src="/vite.svg" width="30" />
           {checkMobile ? (
@@ -50,30 +58,40 @@ export default function NavBar() {
           </form>
         </div>
         <div className="avatar flex align-center justify-center">
-            <DarkModeSwitch />
-            <Avatar />
+          <DarkModeSwitch />
+          <Avatar />
         </div>
       </nav>
-      {checkMobile ? <MSidebar isVisible={isSidebarOpen} /> : <DSecondNav />}
+      {checkMobile ? "" : <DSecondNav />}
+      </div>
+      {checkMobile ? <MSidebar isVisible={isSidebarOpen} /> : ""}
       <Outlet />
     </>
   );
 }
-function DarkModeSwitch(){
-    const [isDark,setIsDark] = useState(useDarkMode()); 
-    return(
-        <>
-            <label className="inline-flex items-center cursor-pointer">
-                <input type="checkbox" checked={isDark} onChange={() => {useDarkMode(); setIsDark(!isDark)}} className="sr-only peer outline-none"/>
-                <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-gray-900"></div>
-            </label>
-        </>
-    )
+function DarkModeSwitch() {
+  const [isDark, setIsDark] = useState(useDarkMode());
+  return (
+    <>
+      <label className="inline-flex items-center cursor-pointer">
+        <input
+          type="checkbox"
+          checked={isDark}
+          onChange={() => {
+            useDarkMode();
+            setIsDark(!isDark);
+          }}
+          className="sr-only peer outline-none"
+        />
+        <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-gray-900"></div>
+      </label>
+    </>
+  );
 }
 
 function DSecondNav() {
   return (
-    <div className="SecondNav sticky mb-72 text-gray-50">
+    <div className="SecondNav mb-72 text-gray-50">
       <ul className="flex gap-8 font-bold pt-2">
         <li className="group/meal relative hover:border-b-4 hover:border-b-slate-50 hover:cursor-pointer">
           MEAL
