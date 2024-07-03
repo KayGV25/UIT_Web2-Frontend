@@ -1,5 +1,4 @@
 import isMobile from "../hooks/isMobile";
-import LoginPage from "./LoginPage";
 import NavBar from "../components/NavBar";
 
 function IndexPage(){
@@ -7,7 +6,6 @@ function IndexPage(){
         <>
             <div>
                 <h1 className="card">Home Page</h1>
-                <LoginPage />
             </div>
         </>
     )
