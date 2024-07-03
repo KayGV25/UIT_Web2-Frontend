@@ -58,7 +58,7 @@ export default function NavBar() {
           </form>
         </div>
         <div className="avatar flex align-center justify-center">
-          <DarkModeSwitch />
+          {/* <DarkModeSwitch /> */}
           <Avatar />
         </div>
       </nav>
