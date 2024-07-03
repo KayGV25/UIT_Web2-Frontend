@@ -167,10 +167,8 @@ function DSecondNav() {
           </ul>
         </li>
       </ul>
-      <div>
-        <ul>
-          <li className="font-bold">About us</li>
-        </ul>
+      <div className="flex ">
+          <a className="font-bold inline-block pt-2">About us</a>
       </div>
     </div>
   );
