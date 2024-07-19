@@ -57,9 +57,9 @@
     @apply grid place-items-center bg-slate-600 hover:bg-slate-700 rounded-full cursor-pointer
 }
 .search{
-    max-width: 400px;
+    max-width: 600px;
     min-width: 100px;
-    width: 50vw;
+    width: 30vw;
     height: 30px;
     text-align: left;
     padding-inline: 10px;
@@ -82,4 +82,10 @@
 }
 .dropdown > li:hover{
     @apply bg-slate-200
+}
+label {
+    @apply text-2xl mb-2
+}
+.btn{
+    @apply bg-gray-600 py-2 hover:bg-gray-500
 }

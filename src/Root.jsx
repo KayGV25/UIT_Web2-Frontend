@@ -5,8 +5,7 @@ export default function Root(){
     return(
         <>
             <NavBar />
-
-            <Link className="newRecipe">
+            <Link className="newRecipe" to="/upload">
                 <img src="/plus.svg" className="size-4"/>
             </Link>
         </>

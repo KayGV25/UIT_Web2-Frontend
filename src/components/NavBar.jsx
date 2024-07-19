@@ -15,7 +15,7 @@ export default function NavBar() {
   const [inputText, setInputText] = useState("");
   return (
     <>
-      <div className="flex flex-col fixed top-0">
+      <div className="flex flex-col sticky top-0">
       <nav
         className={`bg-slate-800 h-16 flex justify-between align-middle ${
           checkMobile ? "px-3" : "px-20"
@@ -49,7 +49,7 @@ export default function NavBar() {
           <form onSubmit={(e) => handleSubmit(e)}>
             <input
               type="text"
-              className="search text-slate-950"
+              className="search text-slate-950 mr-10"
               name="search"
               onChange={(e) => {
                 setInputText(e.target.value);
@@ -91,7 +91,7 @@ function DarkModeSwitch() {
 
 function DSecondNav() {
   return (
-    <div className="SecondNav mb-72 text-gray-50">
+    <div className="SecondNav text-gray-50">
       <ul className="flex gap-8 font-bold pt-2">
         <li className="group/meal relative hover:border-b-4 hover:border-b-slate-50 hover:cursor-pointer">
           MEAL

@@ -11,6 +11,7 @@ import ErrorPage from './pages/ErrorPage';
 import Root from './Root';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
+import UploadPage from './pages/UploadPage';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,13 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <IndexPage />
+      },
+      {
+        path: "/recipes/:id",
+      },
+      {
+        path: "/upload",
+        element: <UploadPage />
       }
     ],
   },
@@ -31,9 +39,6 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUpPage/>,
-  },
-  {
-    path: "/recipes/:id",
   },
 ]);
 
