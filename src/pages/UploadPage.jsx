@@ -27,7 +27,7 @@ export default function UploadPage() {
         //     console.log(res);
         //     console.log(res.data);
         //   })
-        fetch(`http://freeimage.host/api/1/upload/?key=${import.meta.env.VITE_FREEIMAGEHOST_API_KEY}&format=json`, {
+        fetch(`https://freeimage.host/api/1/upload/?key=${import.meta.env.VITE_FREEIMAGEHOST_API_KEY}&format=json`, {
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: {
