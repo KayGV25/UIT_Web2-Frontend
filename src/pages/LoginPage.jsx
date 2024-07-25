@@ -24,7 +24,6 @@ export default class LoginPage extends Component {
             password: newPassword
         })
     }
-
     render() {
         function handleSubmit(e) {
             e.preventDefault();
@@ -41,6 +40,7 @@ export default class LoginPage extends Component {
             }).then((response) => {
                 if (response.status == 400) {
                     alert("Wrong password")
+                    window.location.reload()
                 }
                 if (response.status == 200 || response.ok === true) {
                     response.json().then((response) => {

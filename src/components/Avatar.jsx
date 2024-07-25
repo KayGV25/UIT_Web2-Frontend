@@ -17,6 +17,10 @@ export default function Avatar(){
 }
 
 function DropdownProfile(){
+    function handleLogout(){
+        window.sessionStorage.removeItem("username");
+        window.location.reload();
+    }
     return(
         <div className="flex flex-col DropDownProfile">
             <ul className="flex flex-col  z-20">
@@ -25,7 +29,7 @@ function DropdownProfile(){
                 <li>
                     <div className="flex mx-5 my-3">
                         <img src="/logout.svg" alt=""  width="20"/>
-                        <p className="mx-2">Logout</p>
+                        <p className="mx-2 cursor-pointer" onClick={()=>handleLogout()}>Logout</p>
                     </div>
                 </li>
             </ul>
