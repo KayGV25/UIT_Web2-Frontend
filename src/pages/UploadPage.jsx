@@ -1,42 +1,30 @@
 import { useState } from "react";
 
 export default function UploadPage() {
-    const [imageUrl, setImageUrl] = useState("");
-    const [tagsAlert, setTagsAlert] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);
     const [recipeName, setRecipeName] = useState("");
     const [cookingTime, setCookingTime] = useState("");
     const [ingredients, setIngredients] = useState("");
     const [tags, setTags] = useState("");
     const [recipeInstructions, setRecipeInstructions] = useState("");
+    const [mealType, setMealType] = useState("");
+    const [region, setRegion] = useState("");
 
-    function handleAlertTags(){
-        if(!tagsAlert){
-            setTagsAlert(true);
-            alert("Tags input can be meal type (Breakfast, Lunch, ...), Cuisines (Vietnamese, Mexican, ...), etc.");
-        }
+    async function handleGetImageFromChild(image){
+        setImage(image);
     }
+    // function handleAlertTags(){
+    //     if(!tagsAlert){
+    //         setTagsAlert(true);
+    //         alert("Tags input can be meal type (Breakfast, Lunch, ...), Cuisines (Vietnamese, Mexican, ...), etc.");
+    //     }
+    // }
     function handleSubmit(e) {
         e.preventDefault();
         if(!recipeName ||!cookingTime ||!ingredients ||!recipeInstructions){
             alert("Please fill out all fields");
             return;
         }
-        // axios.post(`http://freeimage.host/api/1/upload/?key=${import.meta.env.VITE_FREEIMAGEHOST_API_KEY}&format=json`, {source: selectedImage})
-        // .then(res => {
-        //     console.log(res);
-        //     console.log(res.data);
-        //   })
-        fetch(`https://freeimage.host/api/1/upload/?key=${import.meta.env.VITE_FREEIMAGEHOST_API_KEY}&format=json`, {
-            method: 'post',
-            headers: {'Content-Type':'application/json'},
-            body: {
-                "source": selectedImage
-            }
-           }).then(res => {
-                setImageUrl(res.image.url);
-                console.log(res, imageUrl);
-           })
+        
       }
     return(
         <div className="grid align-middle justify-center my-5 gap-6">
@@ -67,9 +55,21 @@ export default function UploadPage() {
             {/* Tags */}
                 <div className="my-4 flex flex-col">
                     <label htmlFor="tags" className="font-bold pl-1">Tags</label>
-                    <input type="text" name="tags" className="outline-none rounded-lg text-slate-950" placeholder="#tag1, #tag2, ..." onClick={handleAlertTags} onChange={(e) => {
+                    <input type="text" name="tags" className="outline-none rounded-lg text-slate-950" placeholder="#tag1, #tag2, ..." onChange={(e) => {
                 setTags(e.target.value);
               }}/>
+                </div>
+            {/* Meal type */}
+                <div>
+                    <label htmlFor="meal" className="font-bold">Choose meal type: </label>
+                    <select name="meal" className="text-black rounded-lg" id="" onChange={(e) => {
+                setMealType(e.target.value); console.log(e.target.value)}}>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
             {/* Instruction */}
                 <div className="my-4 flex flex-col">
@@ -78,39 +78,6 @@ export default function UploadPage() {
                 setRecipeInstructions(e.target.value);
               }}/>
                 </div> 
-            {/* Image */}
-            <div>
-                {/* Header */}
-                <h1 className="font-bold pl-1 mb-1 text-2xl">Upload and Display Image</h1>
-
-                {/* Conditionally render the selected image if it exists */}
-                {selectedImage && (
-                    <div>
-                    {/* Display the selected image */}
-                    <img
-                        alt="not found"
-                        width={"250px"}
-                        src={URL.createObjectURL(selectedImage)}
-                    />
-                    <br /> <br />
-                    {/* Button to remove the selected image */}
-                    <button className="btn px-6" onClick={() => setSelectedImage(null)}>Remove</button>
-                    </div>
-                )}
-
-                <br />
-
-                {/* Input element to select an image file */}
-                <input
-                    type="file"
-                    name="image"
-                    // Event handler to capture file selection and update the state
-                    onChange={(event) => {
-                    console.log(event.target.files[0]); // Log the selected file
-                    setSelectedImage(event.target.files[0]); // Update the state with the selected file
-                    }}
-                />
-                </div>
                 <input type="submit" value="Submit" className="btn"/>
             </form>
             </div>
