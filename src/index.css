@@ -14,23 +14,20 @@
 }
 
 .DropDownProfile{
-    position: fixed;
+    position: absolute;
     top: 3.5rem;
     right: 1rem;
     border: 2px black solid;
     @apply bg-slate-50 text-gray-950 rounded-lg drop-shadow-lg border-neutral-950 border-2
 }
 .DropDownProfile > ul > *:hover{
-    @apply bg-slate-300 cursor-pointer z-10
+    @apply bg-slate-300 cursor-pointer
 }
 .DropDownProfile > ul > *:first-child:hover{
     @apply rounded-t-lg
 }
 .DropDownProfile > ul > *:last-child:hover{
     @apply rounded-b-lg
-}
-.DropDownProfile > ul{
-    @apply z-10
 }
 .DropDownProfile > ul > li > p{
     @apply mx-5 my-3

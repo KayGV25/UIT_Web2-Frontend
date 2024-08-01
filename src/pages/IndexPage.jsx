@@ -29,8 +29,8 @@ function IndexPage(){
 
     return(
         <>
-            <div className="w-full px-24 py-32">
-                <div className="grid grid-cols-[repeat(auto-fill,14rem)] gap-5 w-full">
+            <div className="w-full px-16 py-32 pt-36">
+                <div className="grid grid-cols-[repeat(auto-fill,14rem)] gap-x-3 gap-y-7 w-full justify-center">
                     {
                         recipes.map(recipe => {
                             return <DisplayRecipe key={recipe._id} imageLink={recipe.image} recipeName={recipe.name} favCount={recipe.favorites} cookTime={recipe.time} recipeId={recipe._id}/>

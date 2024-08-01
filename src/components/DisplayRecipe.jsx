@@ -5,10 +5,10 @@ export default function DisplayRecipe({imageLink, recipeName, favCount, cookTime
 
     return(
         <>
-            <div className=" w-56 rounded-md flex flex-col cursor-pointer" onClick={() => {
+            <div style={{width: "min(14rem, 100%)"}} className=" rounded-md flex flex-col cursor-pointer hover:bg-zinc-700" onClick={() => {
                 window.location.href = `/recipes/${recipeId}`
             }}>
-                <div className="w-full relative">
+                <div className="w-full relative mb-5">
                     <img src={imageLink} alt="Recipe Thumbnail" className=" w-full rounded-lg h-40"/>
                     <div className="absolute bottom-2 right-2 w-20 h-8 rounded-full bg-slate-50 text-slate-950 grid grid-cols-2 px-2 items-center" onClick={() => handleAddToFavorite()}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 inline ">
@@ -17,8 +17,10 @@ export default function DisplayRecipe({imageLink, recipeName, favCount, cookTime
                         <p>{favCount}</p>
                     </div>
                 </div>
-                <p className="font-bold">{recipeName}</p>
-                <p className="font-thin">{cookTime}</p>
+                <div className="pl-3">
+                    <p className="font-bold">{recipeName}</p>
+                    <p className="font-thin">{cookTime}</p>
+                </div>
             </div>
         </>
     )

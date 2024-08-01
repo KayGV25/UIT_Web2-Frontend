@@ -23,8 +23,8 @@ function DropdownProfile(){
         window.location.reload();
     }
     return(
-        <div className="flex flex-col DropDownProfile">
-            <ul className="flex flex-col  z-20">
+        <div className="flex flex-col DropDownProfile z-100">
+            <ul className="flex flex-col z-10">
                 <li><p>Favorite recipe</p></li>
                 <li><p>My recipe</p></li>
                 <li>

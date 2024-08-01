@@ -6,7 +6,7 @@ export default function MSidebar({
 }){
     return(
         <>
-            <Sidebar aria-label="Sidebar with multi-level dropdown" className={`drop-shadow-lg ${isVisible ? "visible" : "invisible"} fixed top-16`}>
+            <Sidebar aria-label="Sidebar with multi-level dropdown" className={`drop-shadow-lg ${isVisible ? "visible" : "invisible"} fixed top-16 z-10`}>
                 <Sidebar.Items>
                     <Sidebar.ItemGroup>
                     <Sidebar.Collapse icon={HiShoppingBag} label="MEAL">
