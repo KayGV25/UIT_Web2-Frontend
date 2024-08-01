@@ -5,7 +5,6 @@ import { DarkThemeToggle } from "flowbite-react";
 import isMobile from "../hooks/isMobile";
 import MSidebar from "./MSidebar";
 import useDarkMode from "../hooks/useDarkMode";
-import { redirectIfNotLogin } from "../hooks/redirectIfNotLogin";
 export default function NavBar() {
   const checkMobile = isMobile();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -15,8 +14,7 @@ export default function NavBar() {
   const [inputText, setInputText] = useState("");
   return (
     <>
-    {redirectIfNotLogin()}
-      <div className="flex flex-col sticky top-0">
+      <div className="flex flex-col sticky">
       <nav
         className={`bg-slate-800 h-16 flex justify-between align-middle ${
           checkMobile ? "px-3" : "px-20"

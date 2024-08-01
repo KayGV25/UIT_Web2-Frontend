@@ -1,37 +1,11 @@
 import CustomInput from "../components/CustomInput"
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import { Link } from "react-router-dom";
 
-export default class SignUpPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: "",
-            password: ""
-        }
-    }
-
-    newUsername = (newUsername) => {
-        this.setState({
-            ...this.state,
-            username: newUsername
-        })
-    }
-    newPassword = (newPassword) => {
-        this.setState({
-            ...this.state,
-            password: newPassword
-        })
-    }
-    newConfirmPassword = (newConfirmPassword) => {
-        this.setState({
-            ...this.state,
-            password: newConfirmPassword
-        })
-    }
-
-    render() {
-        const BE_BASE_URL = "https://uit-web2-backend.onrender.com"
+export default function SignUpPage() {
+        const [username, setUsername] = useState("")
+        const [password, setPassword] = useState("")
+        const [confirmPassword, setConfirmPassword] = useState("")
 
         function handleSubmit(e) {
             e.preventDefault();
@@ -44,7 +18,7 @@ export default class SignUpPage extends Component {
                 alert("Passwords do not match");
                 return;
             }
-            fetch(BE_BASE_URL + "/register", {
+            fetch(import.meta.env.VITE_BACKEND_URL + "/register", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -57,15 +31,25 @@ export default class SignUpPage extends Component {
             })
         }
 
+        function newUsername(data){
+            setUsername(data);
+        }
+        function newPassword(data){
+            setPassword(data);
+        }
+        function newConfirmPassword(data){
+            setConfirmPassword(data);
+        }
+
         return(
             <div className="h-full grid">
                 <div className=" flex justify-center align-middle my-auto">
                     <div className="bg-zinc-100 rounded-lg px-20 py-20 text-gray-900 min-h-96 h-auto">
                         <h1 className="text-center text-3xl font-bold">Sign up</h1>
                         <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col">
-                            <CustomInput name="Username" type="text" value={this.newUsername}/>
-                            <CustomInput name="Password" type="password" value={this.newPassword}/>
-                            <CustomInput name="Confirm Password" type="password" value={this.newConfirmPassword}/>
+                            <CustomInput name="Username" type="text" value={newUsername}/>
+                            <CustomInput name="Password" type="password" value={newPassword}/>
+                            <CustomInput name="Confirm Password" type="password" value={newConfirmPassword} iClass={(password == confirmPassword) ? "border-stone-700 focus:border-stone-700" : "border-rose-500 focus:border-rose-500"}/>
                             <button type="submit" className="bg-slate-800 text-gray-100 w-fit px-4 py-2 mx-auto rounded-sm">Submit</button>
                         </form>
                         <div className="my-4 text-center">
@@ -75,5 +59,4 @@ export default class SignUpPage extends Component {
                 </div>
             </div>
         )
-    }
 }
