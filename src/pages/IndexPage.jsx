@@ -29,11 +29,6 @@ function IndexPage(){
                             return <DisplayRecipe key={recipe._id} imageLink={recipe.image} recipeName={recipe.name} favCount={recipe.favorites} cookTime={recipe.time} recipeId={recipe._id}/>
                         })
                     }
-                    {
-                        recipes.map(recipe => {
-                            return <DisplayRecipe key={recipe._id} imageLink={recipe.image} recipeName={recipe.name} favCount={recipe.favorites} cookTime={recipe.time} recipeId={recipe._id}/>
-                        })
-                    }
                 </div>
             </div>
         </>
