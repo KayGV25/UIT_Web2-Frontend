@@ -25,8 +25,10 @@ function DropdownProfile(){
     return(
         <div className="flex flex-col DropDownProfile z-100">
             <ul className="flex flex-col z-10">
-                <li><p>Favorite recipe</p></li>
-                <li><p>My recipe</p></li>
+                {isLogin() ? <>
+                    <li><p>Favorite recipe</p></li>
+                    <li><p>My recipe</p></li>
+                </> : ""}
                 <li>
                     <div className="flex mx-5 my-3">
                         <img src="/logout.svg" alt=""  width="20"/>

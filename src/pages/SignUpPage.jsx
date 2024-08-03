@@ -6,6 +6,7 @@ export default function SignUpPage() {
         const [username, setUsername] = useState("")
         const [password, setPassword] = useState("")
         const [confirmPassword, setConfirmPassword] = useState("")
+        const [loading, setLoading] = useState(false);
 
         function handleSubmit(e) {
             e.preventDefault();
@@ -18,6 +19,7 @@ export default function SignUpPage() {
                 alert("Passwords do not match");
                 return;
             }
+            setLoading(true);
             fetch(import.meta.env.VITE_BACKEND_URL + "/register", {
                 method: "POST",
                 headers: {
@@ -25,6 +27,7 @@ export default function SignUpPage() {
                 },
                 body: JSON.stringify(data)
             }).then((response) => {
+                setLoading(false);
                 if (response.status == 200 || response.ok === true) {
                         window.location.href = "/login"
                 }
@@ -50,6 +53,7 @@ export default function SignUpPage() {
                             <CustomInput name="Username" type="text" value={newUsername}/>
                             <CustomInput name="Password" type="password" value={newPassword}/>
                             <CustomInput name="Confirm Password" type="password" value={newConfirmPassword} iClass={(password == confirmPassword) ? "border-stone-700 focus:border-stone-700" : "border-rose-500 focus:border-rose-500"}/>
+                            <p className={`${password == confirmPassword ? "hidden" : "visible"} text-rose-500 none mb-4`}>*Invalid confirm password</p>
                             <button type="submit" className="bg-slate-800 text-gray-100 w-fit px-4 py-2 mx-auto rounded-sm">Submit</button>
                         </form>
                         <div className="my-4 text-center">

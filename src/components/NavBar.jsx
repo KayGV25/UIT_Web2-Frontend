@@ -14,7 +14,7 @@ export default function NavBar() {
   const [inputText, setInputText] = useState("");
   return (
     <>
-      <div className="flex flex-col sticky">
+      <div className="flex flex-col sticky z-10">
       <nav
         className={`bg-slate-800 h-16 flex justify-between align-middle ${
           checkMobile ? "px-3" : "px-20"
