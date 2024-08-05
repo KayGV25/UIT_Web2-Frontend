@@ -24,6 +24,7 @@ export default function NavBar() {
           <>
             <button
               className="mx-3"
+              aria-label="Mobile menu button"
               onClick={() => {
                 setIsSidebarOpen(!isSidebarOpen);
               }}

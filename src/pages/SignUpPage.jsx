@@ -45,7 +45,7 @@ export default function SignUpPage() {
         }
 
         return(
-            <div className="h-full grid">
+            <div className="h-dvh grid">
                 <div className=" flex justify-center align-middle my-auto">
                     <div className="bg-zinc-100 rounded-lg px-20 py-20 text-gray-900 min-h-96 h-auto">
                         <h1 className="text-center text-3xl font-bold">Sign up</h1>
