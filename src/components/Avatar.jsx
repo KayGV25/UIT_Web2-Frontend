@@ -30,7 +30,7 @@ function DropdownProfile(){
                     <li><p>My recipe</p></li>
                 </> : ""}
                 <li>
-                    <div className="flex mx-5 my-3">
+                    <div className="flex mx-5 my-3 cursor-pointer">
                         <img src="/logout.svg" alt=""  width="20"/>
                         {isLogin() ? <p className="mx-2 cursor-pointer" onClick={()=>handleLogout()}>Logout</p> : <p className="mx-2 cursor-pointer" onClick={()=>{window.location.href = "/login"}}>Login</p>}
                     </div>

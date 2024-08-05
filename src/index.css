@@ -20,7 +20,7 @@
     border: 2px black solid;
     @apply bg-slate-50 text-gray-950 rounded-lg drop-shadow-lg border-neutral-950 border-2
 }
-.DropDownProfile > ul > *:hover{
+/* .DropDownProfile > ul > *:hover{
     @apply bg-slate-300 cursor-pointer
 }
 .DropDownProfile > ul > *:first-child:hover{
@@ -28,7 +28,7 @@
 }
 .DropDownProfile > ul > *:last-child:hover{
     @apply rounded-b-lg
-}
+} */
 .DropDownProfile > ul > li > p{
     @apply mx-5 my-3
 }
