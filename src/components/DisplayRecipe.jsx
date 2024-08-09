@@ -6,7 +6,7 @@ export default function DisplayRecipe({imageLink, recipeName, favCount, cookTime
     return(
         <>
             <div className="relative">
-                <div style={{width: "min(14rem, 100%)"}} className=" rounded-md flex flex-col cursor-pointer hover:bg-zinc-700 -z-0" onClick={() => {
+                <div style={{width: "min(14rem, 100%)"}} className=" rounded-md flex flex-col cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-700 -z-0" onClick={() => {
                     window.location.href = `/recipes/${recipeId}`
                 }}>
                     <div className="w-full relative mb-5">
