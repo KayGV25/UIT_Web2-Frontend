@@ -38,6 +38,7 @@ export default function LoginPage(){
             if (response.status == 200 || response.ok === true) {
                 response.json().then((response) => {
                     window.sessionStorage.setItem("username", response.username)
+                    window.sessionStorage.setItem("id", response._id)
                     window.location.href = "/"
 
                 })
