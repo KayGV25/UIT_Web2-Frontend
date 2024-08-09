@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import isMobile from "../hooks/isMobile";
 import MobileRecipePage from "../components/MobileRecipePage";
+import DesktopRecipepage from "../components/DesktopRecipePage";
 
 export default function RecipePage(){
     const [loading, setLoading] = useState(true);
@@ -26,8 +27,6 @@ export default function RecipePage(){
     if(checkMobile) return <MobileRecipePage recipe={recipe}/> 
 
     return(
-        <>
-            
-        </>
+        <DesktopRecipepage recipe={recipe}/>
     )
 }

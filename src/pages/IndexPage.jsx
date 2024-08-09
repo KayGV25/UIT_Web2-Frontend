@@ -1,5 +1,3 @@
-import isMobile from "../hooks/isMobile";
-import NavBar from "../components/NavBar";
 import DisplayRecipe from "../components/DisplayRecipe";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";

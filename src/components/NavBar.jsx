@@ -94,7 +94,7 @@ function DarkModeSwitch() {
 
 function DSecondNav() {
   return (
-    <div className="SecondNav text-gray-50">
+    <div className="SecondNav -z-10 text-gray-50">
       <ul className="flex gap-8 font-bold pt-2">
         <li className="group/meal relative hover:border-b-4 hover:border-b-slate-50 hover:cursor-pointer">
           MEAL
@@ -111,15 +111,6 @@ function DSecondNav() {
             <li>
               <p>Dessert</p>
             </li>
-            {/* Goto /search:type=meal */}
-            <div className="flex w-30 hover:underline underline-offset-2">
-              <p className="w-fit">View All</p>
-              <img
-                src="/arrow_right.svg"
-                className="text-slate-950 translate-x-[-0.5rem] "
-                width="20"
-              />
-            </div>
           </ul>
         </li>
         <li className="group/meal relative hover:border-b-4 hover:border-b-slate-50 hover:cursor-pointer">
@@ -144,29 +135,6 @@ function DSecondNav() {
               <p>Vegetable</p>
             </li>
             {/* Goto /search:type=ingredient */}
-            <p className="hover:underline underline-offset-2">View All</p>
-          </ul>
-        </li>
-        <li className="group/meal relative hover:border-b-4 hover:border-b-slate-50 hover:cursor-pointer">
-          CUISINES
-          <ul className="group/meal invisible font-normal py-2 group-hover/meal:visible dropdown">
-            <li>
-              <p>Vietnamese</p>
-            </li>
-            <li>
-              <p>Mexican</p>
-            </li>
-            <li>
-              <p>Thais</p>
-            </li>
-            <li>
-              <p>French</p>
-            </li>
-            <li>
-              <p>Chinese</p>
-            </li>
-            {/* Goto /search:type=cuisine */}
-            <p className="hover:underline underline-offset-2">View All</p>
           </ul>
         </li>
       </ul>
