@@ -13,6 +13,7 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import UploadPage from './pages/UploadPage';
 import RecipePage from './pages/RecipePage';
+import Loading from './components/Loading';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} fallbackElement={<Loading/>}/>
   </React.StrictMode>
 )

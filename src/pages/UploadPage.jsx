@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { isLogin } from "../hooks/isLogin";
+import Loading from "../components/Loading";
 
 export default function UploadPage() {
     const [recipeName, setRecipeName] = useState("");
@@ -10,6 +11,9 @@ export default function UploadPage() {
     const [mealType, setMealType] = useState("");
     const [region, setRegion] = useState("");
     const [image, setImage] = useState();
+    const [loading, setLoading] = useState(false);
+
+    const username = window.sessionStorage.getItem('username');
 
     function handleImageUpload(e){
         setImage(e.target.files[0]);
@@ -21,17 +25,20 @@ export default function UploadPage() {
     //     }
     // }
     function handleSubmit(e) {
+        setLoading(true);
         e.preventDefault();
         if(!recipeName ||!cookingTime ||!ingredients ||!recipeInstructions){
             alert("Please fill out all fields");
             return;
         }
-        
+        let tag = tags + ", " + mealType;
+
         const uploadImageData = new FormData();
         uploadImageData.append('file', image);
         uploadImageData.append('upload_preset', 'djimmodp');
         uploadImageData.append('cloud_name', 'dbhemcgm4');
 
+        // console.log(recipeInstructions, typeof(recipeInstructions))
         fetch('https://api.cloudinary.com/v1_1/dbhemcgm4/image/upload', {
             method: 'POST',
             body: uploadImageData,
@@ -39,10 +46,31 @@ export default function UploadPage() {
        .then(res => res.json())
        .then(res => {
             let imageURL = res.url;
-
+            const data = {
+                name: recipeName,
+                ingredients: ingredients,
+                instructions: recipeInstructions,
+                tags: tag,
+                author: username,
+                time: cookingTime,
+                image: imageURL,
+            }
+            fetch('https://uit-web2-backend.onrender.com/recipes/upload',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => {
+                setLoading(false);
+            }).then(() => {
+                window.location.href = "/"
+            })
        })
        .catch(err => { console.log(err);});
       }
+
+    if(loading) return <Loading />
     return(
         <>
         {isLogin() ? 

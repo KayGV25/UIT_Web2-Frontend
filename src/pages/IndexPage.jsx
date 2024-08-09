@@ -18,6 +18,8 @@ function IndexPage(){
         getRecipes();
     }, [])
 
+    document.title = "ESRO"
+
     if(loading) return <Loading />
 
     return(
@@ -26,7 +28,7 @@ function IndexPage(){
                 <div className="grid grid-cols-[repeat(auto-fill,14rem)] gap-x-3 gap-y-7 w-full justify-center">
                     {
                         recipes.map(recipe => {
-                            return <DisplayRecipe key={recipe._id} imageLink={recipe.image} recipeName={recipe.name} favCount={recipe.favorites} cookTime={recipe.time} recipeId={recipe._id}/>
+                            return <DisplayRecipe key={recipe._id} imageLink={recipe.image} recipeName={recipe.name} favCount={recipe.timesFavorite} cookTime={recipe.time} recipeId={recipe._id}/>
                         })
                     }
                 </div>
