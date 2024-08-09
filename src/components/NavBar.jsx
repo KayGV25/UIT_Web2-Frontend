@@ -1,17 +1,18 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import Avatar from "./Avatar";
 import { useState } from "react";
-import { DarkThemeToggle } from "flowbite-react";
 import isMobile from "../hooks/isMobile";
 import MSidebar from "./MSidebar";
 import useDarkMode from "../hooks/useDarkMode";
 export default function NavBar() {
   const checkMobile = isMobile();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [inputText, setInputText] = useState("");
+  
   function handleSubmit(e) {
     e.preventDefault();
+    window.location.href = "/search?name=" + inputText;
   }
-  const [inputText, setInputText] = useState("");
   return (
     <>
       <div className="flex flex-col sticky z-10">
@@ -93,22 +94,26 @@ function DarkModeSwitch() {
 }
 
 function DSecondNav() {
+  function handleSearch(data,type){
+    window.location.href = `/search?${type}=${data}`;
+  }
+
   return (
     <div className="SecondNav -z-10 text-gray-50">
       <ul className="flex gap-8 font-bold pt-2">
         <li className="group/meal relative hover:border-b-4 hover:border-b-slate-50 hover:cursor-pointer">
           MEAL
           <ul className="group/meal invisible font-normal py-2 group-hover/meal:visible dropdown">
-            <li>
+            <li onClick={() => handleSearch("Breakfast", "tag")}>
               <p>Beakfast</p>
             </li>
-            <li>
+            <li onClick={() => handleSearch("Lunch", "tag")}>
               <p>Lunch</p>
             </li>
-            <li>
+            <li onClick={() => handleSearch("Dinner", "tag")}>
               <p>Dinner</p>
             </li>
-            <li>
+            <li onClick={() => handleSearch("Dessert", "tag")}>
               <p>Dessert</p>
             </li>
           </ul>
@@ -116,22 +121,22 @@ function DSecondNav() {
         <li className="group/meal relative hover:border-b-4 hover:border-b-slate-50 hover:cursor-pointer">
           INGREDIENT
           <ul className="group/meal invisible font-normal py-2 group-hover/meal:visible dropdown">
-            <li>
+            <li onClick={() => handleSearch("Chicken", "ingredients")}>
               <p>Chicken</p>
             </li>
-            <li>
+            <li onClick={() => handleSearch("Beef", "ingredients")}>
               <p>Beef</p>
             </li>
-            <li>
+            <li onClick={() => handleSearch("Pork", "ingredients")}>
               <p>Pork</p>
             </li>
-            <li>
+            <li onClick={() => handleSearch("Seafood", "ingredients")}>
               <p>Seafood</p>
             </li>
-            <li>
+            <li onClick={() => handleSearch("Pasta", "ingredients")}>
               <p>Pasta</p>
             </li>
-            <li>
+            <li onClick={() => handleSearch("Vegetable", "ingredients")}>
               <p>Vegetable</p>
             </li>
             {/* Goto /search:type=ingredient */}

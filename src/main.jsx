@@ -14,6 +14,7 @@ import SignUpPage from './pages/SignUpPage';
 import UploadPage from './pages/UploadPage';
 import RecipePage from './pages/RecipePage';
 import Loading from './components/Loading';
+import SearchResultPage from './pages/SearchResultPage';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/upload",
         element: <UploadPage />
+      },
+      {
+        path: "/search",
+        element: <SearchResultPage />
       }
     ],
   },
