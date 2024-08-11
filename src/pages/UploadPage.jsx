@@ -14,6 +14,7 @@ export default function UploadPage() {
     const [loading, setLoading] = useState(false);
 
     const username = window.sessionStorage.getItem('username');
+    const uid = window.sessionStorage.getItem('_id');
 
     function handleImageUpload(e){
         setImage(e.target.files[0]);
@@ -54,6 +55,7 @@ export default function UploadPage() {
                 author: username,
                 time: cookingTime,
                 image: imageURL,
+                author_id: uid,
             }
             fetch('https://uit-web2-backend.onrender.com/recipes/upload',{
                 method: 'POST',

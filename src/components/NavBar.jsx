@@ -39,7 +39,7 @@ export default function NavBar() {
         ) : (
           ""
         )}
-        <Link className="flex align-middle gap-3" to="/">
+        <div className="flex align-middle gap-3 cursor-pointer" onClick={() => window.location.href = "/"}>
           <img src="/vite.svg" width="30" />
           {checkMobile ? (
             ""
@@ -48,7 +48,7 @@ export default function NavBar() {
               <p className=" font-bold">ESRO</p>
             </div>
           )}
-        </Link>
+        </div>
         <div className="search-container">
           <form onSubmit={(e) => handleSubmit(e)}>
             <input

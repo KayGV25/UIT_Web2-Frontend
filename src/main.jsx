@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <IndexPage />
+        element: <IndexPage type="index"/>
       },
       {
         path: "/recipes/:id",
@@ -37,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchResultPage />
+      },
+      {
+        path: '/my-recipe',
+        element: <IndexPage type="my-recipe"/>
       }
     ],
   },

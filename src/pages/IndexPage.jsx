@@ -2,13 +2,16 @@ import DisplayRecipe from "../components/DisplayRecipe";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 
-function IndexPage(){
+function IndexPage({type}){
     const [recipes, setRecipes] = useState();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function getRecipes(){
-            const response = await fetch(import.meta.env.VITE_BACKEND_URL + "/recipes");
+            let url = "";
+            if(type == "index") url = import.meta.env.VITE_BACKEND_URL + "/recipes";
+            else if(type == "my-recipe") url = import.meta.env.VITE_BACKEND_URL + "/recipes/search?author=" + window.sessionStorage.getItem("username")
+            const response = await fetch(url);
             const data = await response.json();
             setLoading(false);
             setRecipes(data);
@@ -16,7 +19,7 @@ function IndexPage(){
         getRecipes();
     }, [])
 
-    document.title = "ESRO"
+    document.title = "ESRO" + (type == "index" ? "" : " | My Recipe")
 
     if(loading) return <Loading />
 

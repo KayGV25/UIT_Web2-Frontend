@@ -39,8 +39,8 @@ export default function LoginPage(){
                 response.json().then((response) => {
                     window.sessionStorage.setItem("username", response.username)
                     window.sessionStorage.setItem("id", response._id)
+                    window.localStorage.setItem('token', response.token)
                     window.location.href = "/"
-
                 })
             }
         })
