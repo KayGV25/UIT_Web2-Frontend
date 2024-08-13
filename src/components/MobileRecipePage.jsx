@@ -42,6 +42,9 @@ export default function MobileRecipePage({recipe}){
                     <p className="text-xl whitespace-pre-wrap leading-10">{recipe.instructions}</p>
                 </div>
             </div>
+            <div className="mt-12">
+                <button className="w-fit rounded-lg border-2 h-8 px-3 grid place-items-center border-red-600 text-red-600 hover:border-red-800 hover:text-red-800">Report</button>
+            </div>
         </div>
     )
 }
