@@ -11,10 +11,10 @@ export default function DesktopRecipepage({recipe}){
         <div className="mb-12 w-2/3 grid mx-auto">
             <div className="grid content-center h-52 font-bold">
                 <h1 className="w-1/2 text-4xl">
-                    <RoughNotation type="underline" show="true" animate="true" strokeWidth="3" color="red" padding={5}>
+                    <RoughNotation type="underline" show="true" animate="true" strokeWidth="3" color="red" padding={6}>
                         {recipe.name}
                     </RoughNotation>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-2 mt-3">
                         <p className="text-lg text-left italic mt-3 font-normal">Author:
                             <span onMouseEnter={() => setAuthorHover(true)} onMouseLeave={() => setAuthorHover(false)} className=" cursor-pointer pl-2" onClick={() => window.location.href = "/search?author=" + recipe.author}>
                                 <RoughNotation type="box" show={authorHover} animate="true" strokeWidth="3" color="red" padding={5}>

@@ -11,10 +11,10 @@ export default function MobileRecipePage({recipe}){
         <div className="mb-12 mx-12">
             <div className="grid place-items-center h-52 font-bold">
                 <h1 className="w-full text-4xl">
-                    <RoughNotation type="underline" show="true" animate="true" strokeWidth="3" color="red" padding={5}>
+                    <RoughNotation type="underline" show="true" animate="true" strokeWidth="3" color="red" padding={6}>
                         {recipe.name}
                     </RoughNotation>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-2 mt-3">
                         <p className="text-lg text-left italic mt-3 font-normal">Author: 
                             <span onMouseEnter={() => setAuthorHover(true)} onMouseLeave={() => setAuthorHover(false)} className=" cursor-pointer pl-2" onClick={() => window.location.href = "/search?author=" + recipe.author}>
                                 <RoughNotation type="box" show={authorHover} animate="true" strokeWidth="3" color="red" padding={5}>
