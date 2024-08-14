@@ -5,6 +5,20 @@ export default function DisplayRecipe({imageLink, recipeName, favCount, cookTime
     const [favC, setFavC] = useState(favCount);
     const [isF, setIsF] = useState(isFav);
 
+    function formatCompactNumber(number) {
+        if (number < 1000) {
+          return number;
+        } else if (number >= 1000 && number < 1_000_000) {
+          return (number / 1000).toFixed(1).replace(/\.0$/, "") + "K";
+        } else if (number >= 1_000_000 && number < 1_000_000_000) {
+          return (number / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
+        } else if (number >= 1_000_000_000 && number < 1_000_000_000_000) {
+          return (number / 1_000_000_000).toFixed(1).replace(/\.0$/, "") + "B";
+        } else if (number >= 1_000_000_000_000 && number < 1_000_000_000_000_000) {
+          return (number / 1_000_000_000_000).toFixed(1).replace(/\.0$/, "") + "T";
+        }
+      }
+
     function handleAddToFavorite(){
         if(isLogin()){
             const token = window.localStorage.getItem("token");
@@ -47,7 +61,7 @@ export default function DisplayRecipe({imageLink, recipeName, favCount, cookTime
                     <svg xmlns="http://www.w3.org/2000/svg" fill={isF ? "red" : "none"} viewBox="0 0 24 24" strokeWidth={isF ? "0.5" : "1.5"} stroke="currentColor" className="size-5 inline select-none">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                     </svg>
-                    <p className="select-none">{favC}</p>
+                    <p className="select-none">{formatCompactNumber(favC)}</p>
                 </div>
             </div>
         </>
