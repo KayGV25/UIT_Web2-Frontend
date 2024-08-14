@@ -22,6 +22,10 @@ export default function SearchResultPage(){
         type = "ingredients";
         payload = param.get('ingredients');
     }
+    else if(param.get('author')){
+        type = "author";
+        payload = param.get('author');
+    }
     useEffect(() => {
         async function getRecipe(){
             document.title = "ESRO | Search"

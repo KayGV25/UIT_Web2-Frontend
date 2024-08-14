@@ -1,9 +1,11 @@
+import { useState } from "react";
 import TagBtn from "./TagBtn"
 import { RoughNotation } from "react-rough-notation";
 
 export default function DesktopRecipepage({recipe}){
     const recipeIngredients = recipe.ingredients.split(",")
     const tags = recipe.tags.split(",")
+    const [authorHover, setAuthorHover] = useState(false);
 
     return(
         <div className="mb-12 w-2/3 grid mx-auto">
@@ -13,7 +15,13 @@ export default function DesktopRecipepage({recipe}){
                         {recipe.name}
                     </RoughNotation>
                     <div className="grid grid-cols-2">
-                        <p className="text-lg text-left italic mt-3 font-normal">Author: {recipe.author}</p>
+                        <p className="text-lg text-left italic mt-3 font-normal">Author:
+                            <span onMouseEnter={() => setAuthorHover(true)} onMouseLeave={() => setAuthorHover(false)} className=" cursor-pointer pl-2" onClick={() => window.location.href = "/search?author=" + recipe.author}>
+                                <RoughNotation type="box" show={authorHover} animate="true" strokeWidth="3" color="red" padding={5}>
+                                    {recipe.author}
+                                </RoughNotation>
+                            </span>
+                        </p>
                         <p className="text-lg text-right italic mt-3 font-normal">Cooking time: {recipe.time}</p>
                     </div>
                     <div className="flex flex-row gap-4 font-normal text-base mt-2">
@@ -43,9 +51,9 @@ export default function DesktopRecipepage({recipe}){
                     </ul>
                 </div>
                 <div className="flex flex-col gap-10 italic pl-4">
-                <RoughNotation className="w-fit text-3xl font-bold" type="underline" show="true" animate="true" strokeWidth="3" color="red" padding={5}>
-                    <h2>Instructions</h2>
-                </RoughNotation>
+                    <RoughNotation className="w-fit text-3xl font-bold" type="underline" show="true" animate="true" strokeWidth="3" color="red" padding={5}>
+                        <h2>Instructions</h2>
+                    </RoughNotation>
                     <p className="text-xl whitespace-pre-wrap leading-10">{recipe.instructions}</p>
                 </div>
             </div>
