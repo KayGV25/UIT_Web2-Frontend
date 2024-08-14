@@ -11,7 +11,7 @@ function IndexPage({type}){
             let url = "";
             if(type == "index") url = import.meta.env.VITE_BACKEND_URL + "/recipes";
             else if(type == "my-recipe") url = import.meta.env.VITE_BACKEND_URL + "/recipes/search?author=" + window.sessionStorage.getItem("username")
-            const response = await fetch(url, {
+            await fetch(url, {
                 headers: {
                     token: window.localStorage.getItem("token")
                 }

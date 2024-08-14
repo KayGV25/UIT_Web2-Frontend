@@ -1,11 +1,39 @@
 import { useState } from "react";
 import TagBtn from "./TagBtn"
 import { RoughNotation } from "react-rough-notation";
+import { isLogin } from "../hooks/isLogin";
 
 export default function MobileRecipePage({recipe}){
     const recipeIngredients = recipe.ingredients.split(",")
     const tags = recipe.tags.split(",")
     const [authorHover, setAuthorHover] = useState(false);
+
+    function handleReport(){
+        if(!isLogin()) {
+            window.location.href = "/login"
+            return
+        }
+        const payload = {
+            userId: window.sessionStorage.getItem("id"),
+            recipeId: recipe._id
+        }
+        console.log(payload);
+        fetch(import.meta.env.VITE_BACKEND_URL + "/reports/recipes", {
+            method: "POST",
+            headers: {
+                'token': window.localStorage.getItem("token"),
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        }).then(res => {
+            if(res.status == 200){
+                alert("Report sucessfully")
+            }
+            else{
+                console.log(res);
+            }
+        })
+    }
 
     return(
         <div className="mb-12 mx-12">
@@ -58,7 +86,7 @@ export default function MobileRecipePage({recipe}){
                 </div>
             </div>
             <div className="mt-12">
-                <button className="w-fit rounded-lg border-2 h-8 px-3 grid place-items-center border-red-600 text-red-600 hover:border-red-800 hover:text-red-800">Report</button>
+                <button className="w-fit rounded-lg border-2 h-8 px-3 grid place-items-center border-red-600 text-red-600 hover:border-red-800 hover:text-red-800" onClick={() => handleReport()}>Report</button>
             </div>
         </div>
     )
