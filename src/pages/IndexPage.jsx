@@ -12,11 +12,27 @@ function IndexPage({type}){
         async function getRecipes(){
             let url = "";
             if(type == "index") url = import.meta.env.VITE_BACKEND_URL + "/recipes";
-            else if(type == "my-recipe") url = import.meta.env.VITE_BACKEND_URL + "/recipes/search?author=" + window.sessionStorage.getItem("username")
-            else if(type == "favorites") url = import.meta.env.VITE_BACKEND_URL + "/favorites/recipes/" + window.sessionStorage.getItem("id")
+            else if(type == "my-recipe")  {
+                if(isLogin()){
+                    url = import.meta.env.VITE_BACKEND_URL + "/recipes/search?author=" + window.sessionStorage.getItem("username")
+                }
+                else window.location.href = "/";
+            }
+            else if(type == "favorites") {
+                if(isLogin()){
+                    url = import.meta.env.VITE_BACKEND_URL + "/favorites/recipes/" + window.sessionStorage.getItem("id")
+                }
+                else window.location.href = "/";
+            }
             await fetch(url, {
                 headers: {
                     'token': window.localStorage.getItem("token")
+                }
+            })
+            .then(res => {
+                if(res.status === 401){
+                    window.location.href = "/login"
+                    return;
                 }
             })
             .then(res => res.json())

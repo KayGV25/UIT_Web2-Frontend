@@ -31,14 +31,19 @@ export default function LoginPage(){
             body: JSON.stringify(data)
         }).then((response) => {
             setLoading(false);
-            if (response.status == 400) {
+            if (response.status == 401) {
                 alert("Wrong password")
+                window.location.reload()
+            }
+            if (response.status == 404){
+                alert("User not found")
                 window.location.reload()
             }
             if (response.status == 200 || response.ok === true) {
                 response.json().then((response) => {
                     window.sessionStorage.setItem("username", response.username)
                     window.sessionStorage.setItem("id", response._id)
+                    window.sessionStorage.setItem("isAdmin", response.isAdmin)
                     window.localStorage.setItem('token', response.token)
                     window.location.href = "/"
                 })

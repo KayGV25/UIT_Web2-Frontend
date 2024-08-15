@@ -17,7 +17,6 @@ export default function DesktopRecipepage({recipe}){
             userId: window.sessionStorage.getItem("id"),
             recipeId: recipe._id
         }
-        console.log(payload);
         fetch(import.meta.env.VITE_BACKEND_URL + "/reports/recipes", {
             method: "POST",
             headers: {
@@ -26,11 +25,11 @@ export default function DesktopRecipepage({recipe}){
             },
             body: JSON.stringify(payload)
         }).then(res => {
-            if(res.status == 200){
+            if(res.status == 201){
                 alert("Report sucessfully")
             }
             else{
-                console.log(res);
+                console.clear()
             }
         })
     }

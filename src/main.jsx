@@ -15,6 +15,7 @@ import UploadPage from './pages/UploadPage';
 import RecipePage from './pages/RecipePage';
 import Loading from './components/Loading';
 import SearchResultPage from './pages/SearchResultPage';
+import AdminPage from './pages/AdminPage';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/favorites',
         element: <IndexPage type="favorites"/>
+      },
+      {
+        path: '/admin',
+        element: <AdminPage />
       }
     ],
   },
