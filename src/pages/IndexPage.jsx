@@ -34,8 +34,8 @@ function IndexPage({type}){
                     window.location.href = "/login"
                     return;
                 }
+                return res.json()
             })
-            .then(res => res.json())
             .then(res => {
                 setLoading(false);
                 setRecipes(res);
