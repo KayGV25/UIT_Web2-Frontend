@@ -9,7 +9,7 @@ function IndexPage({type}){
     const [favRecipes, setFavRecipes] = useState([]);
 
     useEffect(() => {
-        async function getRecipes(){
+        async function getRecipe(){
             let url = "";
             if(type == "index") url = import.meta.env.VITE_BACKEND_URL + "/recipes";
             else if(type == "my-recipe")  {
@@ -53,9 +53,11 @@ function IndexPage({type}){
             })
         }
         if(isLogin()){
-            getFav();
+            getFav().then(() => {
+                getRecipe();
+            })
         }
-        getRecipes();
+        else getRecipe();
     }, [])
 
     function isFav(recipe){
@@ -70,6 +72,7 @@ function IndexPage({type}){
     }
 
     document.title = "ESRO" + (type == "index" ? "" : " | My Recipe")
+
     if(loading) return <Loading />
 
     return(

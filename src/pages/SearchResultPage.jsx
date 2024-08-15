@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useSearchParams  } from "react-router-dom";
+import { isLogin } from "../hooks/isLogin";
 import Loading from "../components/Loading";
 import DisplayRecipe from "../components/DisplayRecipe";
 
 export default function SearchResultPage(){
     const [loading, setLoading] = useState(true)
     const [recipes, setRecipe] = useState();
+    const [favRecipes, setFavRecipes] = useState([]);
     const [param] = useSearchParams();
 
     let type = "";
@@ -28,7 +30,6 @@ export default function SearchResultPage(){
     }
     useEffect(() => {
         async function getRecipe(){
-            document.title = "ESRO | Search"
             const response = await fetch(import.meta.env.VITE_BACKEND_URL + "/recipes/search?" + type + "=" + payload);
             if(response.status != 404){
                 const data = await response.json();
@@ -41,8 +42,39 @@ export default function SearchResultPage(){
                 console.clear()
             }
         }
-        getRecipe();
+        async function getFav(){
+            await fetch(import.meta.env.VITE_BACKEND_URL + "/favorites/recipes/" + window.sessionStorage.getItem("id"),{
+                method: "GET",
+                headers: {
+                    'token': window.localStorage.getItem("token")
+                },
+            }).then(res => res.json())
+            .then(res => {
+                setFavRecipes(res)
+            })
+        }
+        if(isLogin()){
+            getFav().then(() => {
+                getRecipe();
+            })
+        }
+        else getRecipe();
     }, [])
+
+    function isFav(recipe){
+        if (Array.isArray(favRecipes)) {
+            for(var r of favRecipes){
+                if(JSON.stringify(r) == JSON.stringify(recipe)){
+                    console.log(r.name, true)
+                    return true
+                }
+                console.log(r.name, false)
+                return false
+            }
+        }
+    }
+
+    document.title = "ESRO | Search"
 
     if(loading) return <Loading />
 
@@ -56,7 +88,7 @@ export default function SearchResultPage(){
             <div className="grid grid-cols-[repeat(auto-fill,14rem)] gap-x-3 gap-y-7 w-full justify-center">
                 {
                     recipes.map(recipe => {
-                        return <DisplayRecipe key={recipe._id} imageLink={recipe.image} recipeName={recipe.name} favCount={recipe.timesFavorite} cookTime={recipe.time} recipeId={recipe._id}/>
+                        return <DisplayRecipe key={recipe._id} imageLink={recipe.image} recipeName={recipe.name} favCount={recipe.timesFavorite} cookTime={recipe.time} recipeId={recipe._id} isFav={isFav(recipe)}/>
                     })
                 }
             </div>
