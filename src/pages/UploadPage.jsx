@@ -76,7 +76,7 @@ export default function UploadPage() {
     return(
         <>
         {isLogin() ? 
-            <div className="grid align-middle justify-center my-5 gap-6">
+            <div className="grid align-middle justify-center gap-6 pt-36 mb-16">
                 <h1 className=" text-center text-3xl font-bold">Upload Your Recipe</h1>
                 <div className="w-screen flex justify-center">
                 <form className="w-2/5 flex flex-col gap-3 justify-center align-middle" onSubmit={(e) => handleSubmit(e)}>

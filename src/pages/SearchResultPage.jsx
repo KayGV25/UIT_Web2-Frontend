@@ -47,7 +47,7 @@ export default function SearchResultPage(){
     if(loading) return <Loading />
 
     return(
-        <div className="mb-12 w-2/3 grid mx-auto">
+        <div className="mb-12 w-2/3 grid mx-auto pt-36">
             <div className="grid content-center h-52 font-bold">
                 <h1 className="w-1/2 text-4xl">
                     Search result for: {payload}

@@ -35,7 +35,7 @@ export default function DesktopRecipepage({recipe}){
     }
 
     return(
-        <div className="mb-12 w-2/3 grid mx-auto">
+        <div className="mb-12 w-2/3 grid mx-auto pt-36">
             <div className="grid content-center h-52 font-bold">
                 <h1 className="w-1/2 text-4xl">
                     <RoughNotation type="underline" show="true" animate="true" strokeWidth="3" color="red" padding={6}>
