@@ -11,7 +11,7 @@ export default function MSidebar({isVisible}){
                 <Sidebar.Items>
                     <Sidebar.ItemGroup>
                     <Sidebar.Collapse icon={HiShoppingBag} label="MEAL">
-                        <Sidebar.Item href="/search?tag=Beakfast">Beakfast</Sidebar.Item>
+                        <Sidebar.Item href="/search?tag=Breakfast">Breakfast</Sidebar.Item>
                         <Sidebar.Item href="/search?tag=Lunch">Lunch</Sidebar.Item>
                         <Sidebar.Item href="/search?tag=Dinner">Dinner</Sidebar.Item>
                         <Sidebar.Item href="/search?tag=Dessert">Dessert</Sidebar.Item>
