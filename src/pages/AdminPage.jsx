@@ -21,6 +21,7 @@ export default function AdminPage(){
                 return res.json()
             })
             .then(res => {
+                res.sort((a, b) => b.timesReported - a.timesReported)
                 setLoading(false)
                 setRecipe(res)
                 console.clear()
