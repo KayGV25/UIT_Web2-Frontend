@@ -12,6 +12,7 @@ export default function Root(){
 
     return(
         <>
+            <div id="top" className=" invisible"></div>
             <NavBar />
             <Link className="newRecipe relative group" to="/upload" aria-label="New Recipe">
                 <img src="/plus.svg" className="size-4"/>

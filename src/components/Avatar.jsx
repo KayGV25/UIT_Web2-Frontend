@@ -46,8 +46,8 @@ function DropdownProfile(){
     }
 
     return(
-        <div className="flex flex-col DropDownProfile z-100">
-            <ul className="flex flex-col z-10">
+        <div className="flex flex-col DropDownProfile">
+            <ul className="flex flex-col">
                 <li className="hover:bg-slate-200 cursor-pointer hover:rounded-t-lg" onClick={() => handleSwitchTheme()}>
                     <div className="flex items-center mx-5 my-3 gap-2">
                     {
