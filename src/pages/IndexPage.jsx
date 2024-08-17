@@ -63,11 +63,12 @@ function IndexPage({type}){
     function isFav(recipe){
         if (Array.isArray(favRecipes)) {
             for(var r of favRecipes){
-                if(JSON.stringify(r) == JSON.stringify(recipe)){
+                if(JSON.stringify(r) === JSON.stringify(recipe)){
+                    console.log(recipe, r, JSON.stringify(r) == JSON.stringify(recipe))
                     return true
                 }
-                return false
             }
+            return false
         }
     }
 
