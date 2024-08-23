@@ -68,9 +68,8 @@ export default function SearchResultPage(){
                     console.log(r.name, true)
                     return true
                 }
-                console.log(r.name, false)
-                return false
             }
+            return false
         }
     }
 
