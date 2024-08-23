@@ -50,7 +50,7 @@ export default function DisplayRecipe({imageLink, recipeName, favCount, cookTime
                     window.location.href = `/recipes/${recipeId}`
                 }}>
                     <div className="w-full relative mb-5">
-                        <img src={imageLink} alt="Recipe Thumbnail" className=" w-full rounded-lg h-40"/>
+                        <img src={imageLink} alt={recipeName} className=" w-full rounded-lg h-40"/>
                     </div>
                     <div className="pl-3">
                         <p className="font-bold">{recipeName}</p>
