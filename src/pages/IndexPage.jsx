@@ -25,9 +25,17 @@ function IndexPage({type}){
                 else window.location.href = "/";
             }
 
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers:{
+                    "token": window.localStorage.getItem("token")
+                }
+            });
+            if(type != "index" && (response.status == 401 || response.status == 403)){
+                window.location.href = "/login";
+            }
             if(response.status != 204){
                 const data = await response.json();
+                console.log(data);
                 setLoading(false);
                 setRecipes(data);
             }
