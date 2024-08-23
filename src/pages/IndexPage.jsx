@@ -24,22 +24,18 @@ function IndexPage({type}){
                 }
                 else window.location.href = "/";
             }
-            await fetch(url, {
-                headers: {
-                    'token': window.localStorage.getItem("token")
-                }
-            })
-            .then(res => {
-                if(res.status === 401){
-                    window.location.href = "/login"
-                    return;
-                }
-                return res.json()
-            })
-            .then(res => {
+
+            const response = await fetch(url);
+            if(response.status != 204){
+                const data = await response.json();
                 setLoading(false);
-                setRecipes(res || []);
-            });
+                setRecipes(data);
+            }
+            else{
+                setLoading(false)
+                setRecipes([]);
+                console.clear()
+            }
         }
         async function getFav(){
             await fetch(import.meta.env.VITE_BACKEND_URL + "/favorites/recipes/" + window.sessionStorage.getItem("id"),{
@@ -49,7 +45,7 @@ function IndexPage({type}){
                 },
             }).then(res => res.json())
             .then(res => {
-                setFavRecipes(res || [])
+                setFavRecipes(res)
             })
         }
         if(isLogin()){

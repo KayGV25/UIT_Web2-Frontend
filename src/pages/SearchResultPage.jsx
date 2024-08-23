@@ -31,7 +31,7 @@ export default function SearchResultPage(){
     useEffect(() => {
         async function getRecipe(){
             const response = await fetch(import.meta.env.VITE_BACKEND_URL + "/recipes/search?" + type + "=" + payload);
-            if(response.status != 404){
+            if(response.status != 204){
                 const data = await response.json();
                 setLoading(false);
                 setRecipe(data);
