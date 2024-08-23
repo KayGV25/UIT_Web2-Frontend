@@ -38,7 +38,7 @@ function IndexPage({type}){
             })
             .then(res => {
                 setLoading(false);
-                setRecipes(res);
+                setRecipes(res || []);
             });
         }
         async function getFav(){
@@ -49,7 +49,7 @@ function IndexPage({type}){
                 },
             }).then(res => res.json())
             .then(res => {
-                setFavRecipes(res)
+                setFavRecipes(res || [])
             })
         }
         if(isLogin()){
